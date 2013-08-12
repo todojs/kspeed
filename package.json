@@ -1,0 +1,12 @@
+{
+  "name": "kspeed",
+  "version": "0.1.0",
+  "description": "kspeed",
+  "main": "kspeed.js",
+  "scripts": {
+    "test": "mocha -R spec ./test/test.js"
+  },
+  "author": "todojs",
+  "license": "MIT",
+  "readmeFilename": "README.md"
+}
