@@ -1,6 +1,6 @@
 # kspeed
 
-It's a project of [todojs.com](http://www.todojs.com)
+It's a project of [todojs.com](http://www.todojs.com) (Spanish web site about Javascript) with the special collaboration of [Kubide](http://www.kubide.es).
 
 ## Objective
 
