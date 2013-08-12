@@ -34,7 +34,6 @@ kspeed('test 1', t1);   // the result is output to console
 kspeed('test 2', t2);   // the result is output to console
 ```
 
-
 ## Reference
 
 ### Call test
@@ -93,7 +92,7 @@ kspeed(times)
 
 Return the number of times.
 
-### Get a object with the result
+### Get an object with the result
 
 ```js
 kspeed()
