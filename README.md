@@ -108,4 +108,17 @@ kspeed.reset()
 ```
 
 > Reset all previous result and restore `times` value to 1. 
-  
+
+## Testing
+
+How do I run the project's automated tests?
+
+```
+npm test
+```
+
+or 
+
+```
+mocha -R spec ./test/test.js
+```
