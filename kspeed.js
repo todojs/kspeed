@@ -79,7 +79,7 @@ var kspeed = (function() {
 	
 	// Reset the result object
 	kspeed.reset = function() {
-		nTimes = 1;
+		nDefaultTimes = 1;
 		aResults = {};
 	};
 

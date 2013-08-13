@@ -34,7 +34,7 @@ describe('kspeed test', function() {
 			assert.equal(number, 1);
 			done();
 		});
-		it('run with 10 as first argument and run after by default', function test_1(done) {
+		it('run with 10 as first arg<ument and run after by default', function test_1(done) {
 			var number = 0;
 			kspeed(10, 'test_5', function() {
 				number++;
@@ -45,6 +45,19 @@ describe('kspeed test', function() {
 				number++;
 			}, function(){});
 			assert.equal(number, 1);
+			done();
+		});
+	});
+	describe('check the result', function () {
+		it('return', function test_1(done) {
+			kspeed.reset();
+			kspeed(10, 'test_6', function() {
+			}, function(){});
+			kspeed(10, 'test_7', function() {
+			}, function(){});
+			var aResult = kspeed();
+			assert.equal(aResult.test_6, 0);
+			assert.equal(aResult.test_7, 0);
 			done();
 		});
 	});

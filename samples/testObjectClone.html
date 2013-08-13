@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Basic Sample</title>
+<style>
+.col_33 {
+	width: 30%;
+	height: 410px;
+	margin: 0 2% 0 0;
+	padding: 0.5%;
+	float: left;
+	border: 1px solid grey;
+	overflow: auto;
+}
+.result {
+	background-color: #C0C0C0;
+	width: 98%;
+	height: 16px;
+	padding: 5px;
+	font: 14px Arial;
+	text-align: center;
+}
+.run {
+	margin: 20px;
+	float: right;
+}
+</style>
+<script src="../kspeed.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script>
+
+// Basic object
+ var library = [
+	{	author: 'Miguel de Cervantes Saavedra',
+		title: 'El ingenioso hidalgo don Quijote de la Mancha',
+		date: '1605'
+	},
+	{	author: 'William Shakespeare',
+		title: 'The Tragedy of Hamlet, Prince of Denmark',
+		date: '1605'
+	}];
+
+
+// Test 1
+function cloneWithJSON() {
+	var newObject = JSON.parse(JSON.stringify(library));
+	if (newObject[0].author !== library[0].author) {
+		throw new Error("The object isn't clone");
+	}
+	newObject[0].author = "otro";
+	if (newObject[0].author == library[0].author) {
+		throw new Error("The object isn't clone");
+	}
+}
+
+// Test 2
+function clone(obj){
+	if (obj == null || typeof(obj) != 'object') {
+		return obj;
+	}
+	var copy = obj.constructor();
+	for(var key in obj) {
+		if (obj.hasOwnProperty(key)) {
+			copy[key] = clone(obj[key]);
+		}
+	}
+	return copy;
+}
+
+function cloneWithRecursiveFunction() {
+	var newObject = clone(library);
+	if (newObject[0].author !== library[0].author) {
+		throw new Error("The object isn't clone");
+	}
+	newObject[0].author = "otro";
+	if (newObject[0].author == library[0].author) {
+		throw new Error("The object isn't clone");
+	}
+}
+
+function cloneWithJQueryExtend() {
+	var newObject = {};
+	$.extend(true, newObject, library);
+	if (newObject[0].author !== library[0].author) {
+		throw new Error("The object isn't clone");
+	}
+	newObject[0].author = "otro";
+	if (newObject[0].author == library[0].author) {
+		throw new Error("The object isn't clone");
+	}
+}
+
+function runTest() {
+	kspeed(100000);
+	kspeed('test1', cloneWithJSON);
+	kspeed('test2', cloneWithRecursiveFunction);
+	kspeed('test3', cloneWithJQueryExtend);
+	var aResult = kspeed(); 
+	document.getElementById('test1').innerHTML = typeof aResult['test1'] === 'string' ? aResult['test1'] : (aResult['test1'] / 1000) + ' seconds (100.000 times)';
+	document.getElementById('test2').innerHTML = typeof aResult['test2'] === 'string' ? aResult['test2'] : (aResult['test2'] / 1000) + ' seconds (100.000 times)';
+	document.getElementById('test3').innerHTML = typeof aResult['test3'] === 'string' ? aResult['test3'] : (aResult['test3'] / 1000) + ' seconds (100.000 times)';
+}
+</script>
+</head>
+<body>
+<h1>Test Speed of Clone Object Techniques</h1>
+<div class="col_33">
+<div id="test1" class="result"></div>
+<pre><code>// Test 1
+function cloneWithJSON() {
+  var newObject = JSON.parse(JSON.stringify(library));
+  if (newObject[0].author !== library[0].author) {
+    throw new Error("The object isn't clone");
+  }
+  newObject[0].author = "otro";
+  if (newObject[0].author == library[0].author) {
+    throw new Error("The object isn't clone");
+  }
+}
+</code></pre>
+</div>
+<div class="col_33">
+<div id="test2" class="result"></div>
+<pre><code>// Test 2
+function clone(obj){
+  if(obj == null || typeof(obj) != 'object') {
+    return obj;
+  }
+  var temp = obj.constructor();
+  for(var key in obj) {
+    temp[key] = clone(obj[key]);
+  }
+  return temp;
+}
+
+function cloneWithRecursiveFunction() {
+  var newObject = clone(objeto);
+  if (newObject[0].author !== library[0].author) {
+    throw new Error("The object isn't clone");
+  }
+  newObject[0].author = "otro";
+  if (newObject[0].author == library[0].author) {
+    throw new Error("The object isn't clone");
+  }
+}
+</code></pre>
+</div>
+<div class="col_33">
+<div id="test3" class="result"></div>
+<pre><code>// Test 3
+function cloneWithJQueryExtend() {
+  var newObject = {};
+  $.extend(true, newObject, library);
+  if (newObject[0].author !== library[0].author) {
+    throw new Error("The object isn't clone");
+  }
+  newObject[0].author = "otro";
+  if (newObject[0].author == library[0].author) {
+    throw new Error("The object isn't clone");
+  }
+}
+</code></pre>
+</div>
+<div class="run">
+<button onclick="runTest()">Run kspeed test</button>
+<script>runTest();</script>
+</div>
+</body>
+</html>
