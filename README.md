@@ -16,13 +16,13 @@ You can test various functions or techniques and you know what is the fastest wi
 var kspeed = require('kspeed.js');
 ```
 
-### Web page
+#### Web page
 
 ```html
 <script src="kspeed.js"></script>
 ```
 
-### Basic testing
+#### Basic testing
 
 ```js
 function t1() {
@@ -108,7 +108,7 @@ function runTest() {
 
 ## Reference
 
-### Test
+#### Test
 
 ```js
 kspeed([times,] description, functionTest[, functionEnd]);
@@ -152,7 +152,7 @@ kspeed([times,] description, functionTest[, functionEnd]);
 > 
 > When the `functionEnd` is present `kspeed` don't display the result on the console.
 
-### Configure the number of executions
+#### Configure the number of executions
 
 ```js
 kspeed(times)
@@ -164,7 +164,7 @@ kspeed(times)
 
 Return the number of times.
 
-### Get an object with the result
+#### Get an object with the result
 
 ```js
 kspeed()
@@ -172,7 +172,7 @@ kspeed()
 
 > Return the result of the last call of `kspeed`. 
 
-### Reset
+#### Reset
 
 ```js
 kspeed.reset()
