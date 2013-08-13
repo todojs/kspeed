@@ -194,7 +194,7 @@ or
 mocha -R spec ./test/test.js
 ```
 
-## ToDo
+## To do
 
 - Asynchronous function support.
 - Calculate average between groups of calls
